@@ -165,17 +165,19 @@ fi
 # If configure.ac declared an installable ltdl, and the user didn't override
 # with --disable-ltdl-install, we will install the shipped libltdl.
 case $enable_ltdl_install in
-  no) ac_configure_args="$ac_configure_args --enable-ltdl-install=no"
-      LIBLTDL=-lltdl
-      LTDLDEPS=
-      LTDLINCL=
-      ;;
-  *)  enable_ltdl_install=yes
-      ac_configure_args="$ac_configure_args --enable-ltdl-install"
-      LIBLTDL='_LT_BUILD_PREFIX'"${lt_ltdl_dir+$lt_ltdl_dir/}libltdl.la"
-      LTDLDEPS=$LIBLTDL
-      LTDLINCL='-I$(top_srcdir)'"${lt_ltdl_dir+/$lt_ltdl_dir}"
-      ;;
+  no)
+    ac_configure_args="$ac_configure_args --enable-ltdl-install=no"
+    LIBLTDL=-lltdl
+    LTDLDEPS=
+    LTDLINCL=
+    ;;
+  *)
+    enable_ltdl_install=yes
+    ac_configure_args="$ac_configure_args --enable-ltdl-install"
+    LIBLTDL='_LT_BUILD_PREFIX'"${lt_ltdl_dir+$lt_ltdl_dir/}libltdl.la"
+    LTDLDEPS=$LIBLTDL
+    LTDLINCL='-I$(top_srcdir)'"${lt_ltdl_dir+/$lt_ltdl_dir}"
+    ;;
 esac
 
 AC_SUBST([LIBLTDL])
@@ -292,28 +294,29 @@ fi
 
 case ,$with_included_ltdl,$with_ltdl_include,$with_ltdl_lib, in
   ,yes,no,no,)
-        m4_case(m4_default(_LTDL_TYPE, [convenience]),
-            [convenience], [_LTDL_CONVENIENCE],
-            [installable], [_LTDL_INSTALLABLE],
-          [m4_fatal([unknown libltdl build type: ]_LTDL_TYPE)])
-        ;;
+    m4_case(m4_default(_LTDL_TYPE, [convenience]),
+        [convenience], [_LTDL_CONVENIENCE],
+        [installable], [_LTDL_INSTALLABLE],
+      [m4_fatal([unknown libltdl build type: ]_LTDL_TYPE)])
+    ;;
   ,no,no,no,)
-        # If the included ltdl is not to be used, then use the
-        # preinstalled libltdl we found.
-        AC_DEFINE([HAVE_LTDL], [1],
-          [Define this if a modern libltdl is already installed])
-        LIBLTDL=-lltdl
-        LTDLDEPS=
-        LTDLINCL=
-        ;;
+    # If the included ltdl is not to be used, then use the
+    # preinstalled libltdl we found.
+    AC_DEFINE([HAVE_LTDL], [1],
+      [Define this if a modern libltdl is already installed])
+    LIBLTDL=-lltdl
+    LTDLDEPS=
+    LTDLINCL=
+    ;;
   ,no*,no,*)
-        AC_MSG_ERROR(['--with-ltdl-include' and '--with-ltdl-lib' options must be used together])
-        ;;
-  *)    with_included_ltdl=no
-        LIBLTDL="-L$with_ltdl_lib -lltdl"
-        LTDLDEPS=
-        LTDLINCL=-I$with_ltdl_include
-        ;;
+    AC_MSG_ERROR(['--with-ltdl-include' and '--with-ltdl-lib' options must be used together])
+    ;;
+  *)
+    with_included_ltdl=no
+    LIBLTDL="-L$with_ltdl_lib -lltdl"
+    LTDLDEPS=
+    LTDLINCL=-I$with_ltdl_include
+    ;;
 esac
 INCLTDL=$LTDLINCL
 

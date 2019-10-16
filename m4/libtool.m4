@@ -977,7 +977,7 @@ $RM -r conftest*
 # -------------------------
 m4_defun_once([_LT_REQUIRED_DARWIN_CHECKS],[
   case $host_os in
-    rhapsody* | darwin*)
+  rhapsody* | darwin*)
     AC_CHECK_TOOL([DSYMUTIL], [dsymutil], [:])
     AC_CHECK_TOOL([NMEDIT], [nmedit], [:])
     AC_CHECK_TOOL([LIPO], [lipo], [:])
@@ -1059,28 +1059,28 @@ _LT_EOF
       else
         cat conftest.err >&AS_MESSAGE_LOG_FD
       fi
-        rm -f conftest.err libconftest.a conftest conftest.c
-        rm -rf conftest.dSYM
+      rm -f conftest.err libconftest.a conftest conftest.c
+      rm -rf conftest.dSYM
     ])
     case $host_os in
-    rhapsody* | darwin1.[[012]])
-      _lt_dar_allow_undefined='$wl-undefined ${wl}suppress' ;;
-    darwin1.*)
-      _lt_dar_allow_undefined='$wl-flat_namespace $wl-undefined ${wl}suppress' ;;
-    darwin*) # darwin 5.x on
-      # if running on 10.5 or later, the deployment target defaults
-      # to the OS version, if on x86, and 10.4, the deployment
-      # target defaults to 10.4. Don't you love it?
-      case ${MACOSX_DEPLOYMENT_TARGET-10.0},$host in
-        10.0,*86*-darwin8*|10.0,*-darwin[[91]]*)
-          _lt_dar_allow_undefined='$wl-undefined ${wl}dynamic_lookup' ;;
-        10.[[012]][[,.]]*)
-          _lt_dar_allow_undefined='$wl-flat_namespace $wl-undefined ${wl}suppress' ;;
-        10.*)
-          _lt_dar_allow_undefined='$wl-undefined ${wl}dynamic_lookup' ;;
-      esac
-    ;;
-  esac
+      rhapsody* | darwin1.[[012]])
+        _lt_dar_allow_undefined='$wl-undefined ${wl}suppress' ;;
+      darwin1.*)
+        _lt_dar_allow_undefined='$wl-flat_namespace $wl-undefined ${wl}suppress' ;;
+      darwin*) # darwin 5.x on
+        # if running on 10.5 or later, the deployment target defaults
+        # to the OS version, if on x86, and 10.4, the deployment
+        # target defaults to 10.4. Don't you love it?
+        case ${MACOSX_DEPLOYMENT_TARGET-10.0},$host in
+          10.0,*86*-darwin8*|10.0,*-darwin[[91]]*)
+            _lt_dar_allow_undefined='$wl-undefined ${wl}dynamic_lookup' ;;
+          10.[[012]][[,.]]*)
+            _lt_dar_allow_undefined='$wl-flat_namespace $wl-undefined ${wl}suppress' ;;
+          10.*)
+            _lt_dar_allow_undefined='$wl-undefined ${wl}dynamic_lookup' ;;
+        esac
+        ;;
+    esac
     if test yes = "$lt_cv_apple_cc_single_mod"; then
       _lt_dar_single_mod='$single_module'
     fi
@@ -1119,8 +1119,8 @@ m4_defun([_LT_DARWIN_LINKER_FEATURES],
   _LT_TAGVAR(link_all_deplibs, $1)=yes
   _LT_TAGVAR(allow_undefined_flag, $1)=$_lt_dar_allow_undefined
   case $cc_basename in
-     ifort*|nagfor*) _lt_dar_can_shared=yes ;;
-     *) _lt_dar_can_shared=$GCC ;;
+    ifort*|nagfor*) _lt_dar_can_shared=yes ;;
+    *) _lt_dar_can_shared=$GCC ;;
   esac
   if test yes = "$_lt_dar_can_shared"; then
     output_verbose_link_cmd=func_echo_all
@@ -1135,7 +1135,7 @@ m4_defun([_LT_DARWIN_LINKER_FEATURES],
     fi
 ],[])
   else
-  _LT_TAGVAR(ld_shlibs, $1)=no
+    _LT_TAGVAR(ld_shlibs, $1)=no
   fi
 ])
 
@@ -2275,23 +2275,23 @@ m4_defun([_LT_PREPARE_MUNGE_PATH_LIST],
 #       VARIABLE will be replaced by "DIR[ DIR]"
 func_munge_path_list ()
 {
-    case x@S|@2 in
-    x)
-        ;;
-    *:)
-        eval @S|@1=\"`$ECHO @S|@2 | $SED 's/:/ /g'` \@S|@@S|@1\"
-        ;;
-    x:*)
-        eval @S|@1=\"\@S|@@S|@1 `$ECHO @S|@2 | $SED 's/:/ /g'`\"
-        ;;
-    *::*)
-        eval @S|@1=\"\@S|@@S|@1\ `$ECHO @S|@2 | $SED -e 's/.*:://' -e 's/:/ /g'`\"
-        eval @S|@1=\"`$ECHO @S|@2 | $SED -e 's/::.*//' -e 's/:/ /g'`\ \@S|@@S|@1\"
-        ;;
-    *)
-        eval @S|@1=\"`$ECHO @S|@2 | $SED 's/:/ /g'`\"
-        ;;
-    esac
+  case x@S|@2 in
+  x)
+    ;;
+  *:)
+    eval @S|@1=\"`$ECHO @S|@2 | $SED 's/:/ /g'` \@S|@@S|@1\"
+    ;;
+  x:*)
+    eval @S|@1=\"\@S|@@S|@1 `$ECHO @S|@2 | $SED 's/:/ /g'`\"
+    ;;
+  *::*)
+    eval @S|@1=\"\@S|@@S|@1\ `$ECHO @S|@2 | $SED -e 's/.*:://' -e 's/:/ /g'`\"
+    eval @S|@1=\"`$ECHO @S|@2 | $SED -e 's/::.*//' -e 's/:/ /g'`\ \@S|@@S|@1\"
+    ;;
+  *)
+    eval @S|@1=\"`$ECHO @S|@2 | $SED 's/:/ /g'`\"
+    ;;
+  esac
 }
 ]])# _LT_PREPARE_PATH_LIST
 
@@ -2800,11 +2800,11 @@ irix5* | irix6* | nonstopux*)
   case $host_os in
     nonstopux*) version_type=nonstopux ;;
     *)
-        if test yes = "$lt_cv_prog_gnu_ld"; then
-                version_type=linux # correct to gnu/linux during the next big refactor
-        else
-                version_type=irix
-        fi ;;
+      if test yes = "$lt_cv_prog_gnu_ld"; then
+        version_type=linux # correct to gnu/linux during the next big refactor
+      else
+        version_type=irix
+      fi ;;
   esac
   need_lib_prefix=no
   need_version=no
@@ -4229,14 +4229,14 @@ m4_if([$1], [CXX], [
     amigaos*)
       case $host_cpu in
       powerpc)
-            # see comment about AmigaOS4 .so support
-            _LT_TAGVAR(lt_prog_compiler_pic, $1)='-fPIC'
+        # see comment about AmigaOS4 .so support
+        _LT_TAGVAR(lt_prog_compiler_pic, $1)='-fPIC'
         ;;
       m68k)
-            # FIXME: we need at least 68020 code to build shared libraries, but
-            # adding the '-m68020' flag to GCC prevents building anything better,
-            # like '-m68040'.
-            _LT_TAGVAR(lt_prog_compiler_pic, $1)='-m68020 -resident32 -malways-restore-a4'
+        # FIXME: we need at least 68020 code to build shared libraries, but
+        # adding the '-m68020' flag to GCC prevents building anything better,
+        # like '-m68040'.
+        _LT_TAGVAR(lt_prog_compiler_pic, $1)='-m68020 -resident32 -malways-restore-a4'
         ;;
       esac
       ;;
@@ -4540,7 +4540,7 @@ m4_if([$1], [CXX], [
     _LT_TAGVAR(lt_prog_compiler_static, $1)='-static'
 
     case $host_os in
-      aix*)
+    aix*)
       # All AIX code is PIC.
       if test ia64 = "$host_cpu"; then
         # AIX 5 now supports IA64 processor
@@ -5097,14 +5097,14 @@ _LT_EOF
     amigaos*)
       case $host_cpu in
       powerpc)
-            # see comment about AmigaOS4 .so support
-            _LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags $wl-soname $wl$soname -o $lib'
-            _LT_TAGVAR(archive_expsym_cmds, $1)=''
+        # see comment about AmigaOS4 .so support
+        _LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags $wl-soname $wl$soname -o $lib'
+        _LT_TAGVAR(archive_expsym_cmds, $1)=''
         ;;
       m68k)
-            _LT_TAGVAR(archive_cmds, $1)='$RM $output_objdir/a2ixlibrary.data~$ECHO "#define NAME $libname" > $output_objdir/a2ixlibrary.data~$ECHO "#define LIBRARY_ID 1" >> $output_objdir/a2ixlibrary.data~$ECHO "#define VERSION $major" >> $output_objdir/a2ixlibrary.data~$ECHO "#define REVISION $revision" >> $output_objdir/a2ixlibrary.data~$AR $AR_FLAGS $lib $libobjs~$RANLIB $lib~(cd $output_objdir && a2ixlibrary -32)'
-            _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-L$libdir'
-            _LT_TAGVAR(hardcode_minus_L, $1)=yes
+        _LT_TAGVAR(archive_cmds, $1)='$RM $output_objdir/a2ixlibrary.data~$ECHO "#define NAME $libname" > $output_objdir/a2ixlibrary.data~$ECHO "#define LIBRARY_ID 1" >> $output_objdir/a2ixlibrary.data~$ECHO "#define VERSION $major" >> $output_objdir/a2ixlibrary.data~$ECHO "#define REVISION $revision" >> $output_objdir/a2ixlibrary.data~$AR $AR_FLAGS $lib $libobjs~$RANLIB $lib~(cd $output_objdir && a2ixlibrary -32)'
+        _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-L$libdir'
+        _LT_TAGVAR(hardcode_minus_L, $1)=yes
         ;;
       esac
       ;;
@@ -5561,14 +5561,14 @@ _LT_EOF
     amigaos*)
       case $host_cpu in
       powerpc)
-            # see comment about AmigaOS4 .so support
-            _LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags $wl-soname $wl$soname -o $lib'
-            _LT_TAGVAR(archive_expsym_cmds, $1)=''
+        # see comment about AmigaOS4 .so support
+        _LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags $wl-soname $wl$soname -o $lib'
+        _LT_TAGVAR(archive_expsym_cmds, $1)=''
         ;;
       m68k)
-            _LT_TAGVAR(archive_cmds, $1)='$RM $output_objdir/a2ixlibrary.data~$ECHO "#define NAME $libname" > $output_objdir/a2ixlibrary.data~$ECHO "#define LIBRARY_ID 1" >> $output_objdir/a2ixlibrary.data~$ECHO "#define VERSION $major" >> $output_objdir/a2ixlibrary.data~$ECHO "#define REVISION $revision" >> $output_objdir/a2ixlibrary.data~$AR $AR_FLAGS $lib $libobjs~$RANLIB $lib~(cd $output_objdir && a2ixlibrary -32)'
-            _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-L$libdir'
-            _LT_TAGVAR(hardcode_minus_L, $1)=yes
+        _LT_TAGVAR(archive_cmds, $1)='$RM $output_objdir/a2ixlibrary.data~$ECHO "#define NAME $libname" > $output_objdir/a2ixlibrary.data~$ECHO "#define LIBRARY_ID 1" >> $output_objdir/a2ixlibrary.data~$ECHO "#define VERSION $major" >> $output_objdir/a2ixlibrary.data~$ECHO "#define REVISION $revision" >> $output_objdir/a2ixlibrary.data~$AR $AR_FLAGS $lib $libobjs~$RANLIB $lib~(cd $output_objdir && a2ixlibrary -32)'
+        _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-L$libdir'
+        _LT_TAGVAR(hardcode_minus_L, $1)=yes
         ;;
       esac
       ;;
@@ -5979,18 +5979,18 @@ _LT_EOF
         sni)
           _LT_TAGVAR(archive_cmds, $1)='$LD -G -h $soname -o $lib $libobjs $deplibs $linker_flags'
           _LT_TAGVAR(hardcode_direct, $1)=yes # is this really true???
-        ;;
+          ;;
         siemens)
           ## LD is ld it makes a PLAMLIB
           ## CC just makes a GrossModule.
           _LT_TAGVAR(archive_cmds, $1)='$LD -G -o $lib $libobjs $deplibs $linker_flags'
           _LT_TAGVAR(reload_cmds, $1)='$CC -r -o $output$reload_objs'
           _LT_TAGVAR(hardcode_direct, $1)=no
-        ;;
+          ;;
         motorola)
           _LT_TAGVAR(archive_cmds, $1)='$LD -G -h $soname -o $lib $libobjs $deplibs $linker_flags'
           _LT_TAGVAR(hardcode_direct, $1)=no #Motorola manual says yes, but my tests say they lie
-        ;;
+          ;;
       esac
       runpath_var='LD_RUN_PATH'
       _LT_TAGVAR(hardcode_shlibpath_var, $1)=no
@@ -8311,15 +8311,15 @@ _LT_DECL([], [lt_unset], [0], [whether the shell understands "unset"])dnl
 
 # test EBCDIC or ASCII
 case `echo X|tr X '\101'` in
- A) # ASCII based system
-    # \n is not interpreted correctly by Solaris 8 /usr/ucb/tr
-  lt_SP2NL='tr \040 \012'
-  lt_NL2SP='tr \015\012 \040\040'
-  ;;
- *) # EBCDIC based system
-  lt_SP2NL='tr \100 \n'
-  lt_NL2SP='tr \r\n \100\100'
-  ;;
+  A) # ASCII based system
+     # \n is not interpreted correctly by Solaris 8 /usr/ucb/tr
+    lt_SP2NL='tr \040 \012'
+    lt_NL2SP='tr \015\012 \040\040'
+    ;;
+  *) # EBCDIC based system
+    lt_SP2NL='tr \100 \n'
+    lt_NL2SP='tr \r\n \100\100'
+    ;;
 esac
 _LT_DECL([SP2NL], [lt_SP2NL], [1], [turn spaces into newlines])dnl
 _LT_DECL([NL2SP], [lt_NL2SP], [1], [turn newlines into spaces])dnl

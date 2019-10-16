@@ -55,7 +55,7 @@ m4_define([lt_unquote], $1)
 # versions of m4sugar mistakenly expanded SEPARATOR but not STRING.
 m4_define([lt_append],
 [m4_define([$1],
-           m4_ifdef([$1], [m4_defn([$1])[$3]])[$2])])
+    m4_ifdef([$1], [m4_defn([$1])[$3]])[$2])])
 
 
 
@@ -102,7 +102,7 @@ m4_define([lt_dict_add_subkey],
 # ----------------------------------
 m4_define([lt_dict_fetch],
 [m4_ifval([$3],
-        m4_ifdef([$1($2:$3)], [m4_defn([$1($2:$3)])]),
+    m4_ifdef([$1($2:$3)], [m4_defn([$1($2:$3)])]),
     m4_ifdef([$1($2)], [m4_defn([$1($2)])]))])
 
 
@@ -110,7 +110,7 @@ m4_define([lt_dict_fetch],
 # -----------------------------------------------------------------
 m4_define([lt_if_dict_fetch],
 [m4_if(lt_dict_fetch([$1], [$2], [$3]), [$4],
-        [$5],
+    [$5],
     [$6])])
 
 
