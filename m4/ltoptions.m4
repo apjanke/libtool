@@ -46,8 +46,8 @@ m4_define([_LT_IF_OPTION],
 # are set.
 m4_define([_LT_UNLESS_OPTIONS],
 [m4_foreach([_LT_Option], m4_split(m4_normalize([$2])),
-	    [m4_ifdef(_LT_MANGLE_OPTION([$1], _LT_Option),
-		      [m4_define([$0_found])])])[]dnl
+            [m4_ifdef(_LT_MANGLE_OPTION([$1], _LT_Option),
+                      [m4_define([$0_found])])])[]dnl
 m4_ifdef([$0_found], [m4_undefine([$0_found])], [$3
 ])[]dnl
 ])
@@ -81,9 +81,9 @@ m4_if([$1],[LT_INIT],[
   _LT_UNLESS_OPTIONS([LT_INIT], [static disable-static], [_LT_ENABLE_STATIC])
   _LT_UNLESS_OPTIONS([LT_INIT], [pic-only no-pic], [_LT_WITH_PIC])
   _LT_UNLESS_OPTIONS([LT_INIT], [fast-install disable-fast-install],
-		   [_LT_ENABLE_FAST_INSTALL])
+                   [_LT_ENABLE_FAST_INSTALL])
   _LT_UNLESS_OPTIONS([LT_INIT], [aix-soname=aix aix-soname=both aix-soname=svr4],
-		   [_LT_WITH_AIX_SONAME([aix])])
+                   [_LT_WITH_AIX_SONAME([aix])])
   ])
 ])# _LT_SET_OPTIONS
 
@@ -166,7 +166,7 @@ m4_define([_LT_ENABLE_SHARED],
 [m4_define([_LT_ENABLE_SHARED_DEFAULT], [m4_if($1, no, no, yes)])dnl
 AC_ARG_ENABLE([shared],
     [AS_HELP_STRING([--enable-shared@<:@=PKGS@:>@],
-	[build shared libraries @<:@default=]_LT_ENABLE_SHARED_DEFAULT[@:>@])],
+        [build shared libraries @<:@default=]_LT_ENABLE_SHARED_DEFAULT[@:>@])],
     [p=${PACKAGE-default}
     case $enableval in
     yes) enable_shared=yes ;;
@@ -176,10 +176,10 @@ AC_ARG_ENABLE([shared],
       # Look at the argument we got.  We use all the common list separators.
       lt_save_ifs=$IFS; IFS=$IFS$PATH_SEPARATOR,
       for pkg in $enableval; do
-	IFS=$lt_save_ifs
-	if test "X$pkg" = "X$p"; then
-	  enable_shared=yes
-	fi
+        IFS=$lt_save_ifs
+        if test "X$pkg" = "X$p"; then
+          enable_shared=yes
+        fi
       done
       IFS=$lt_save_ifs
       ;;
@@ -187,7 +187,7 @@ AC_ARG_ENABLE([shared],
     [enable_shared=]_LT_ENABLE_SHARED_DEFAULT)
 
     _LT_DECL([build_libtool_libs], [enable_shared], [0],
-	[Whether or not to build shared libraries])
+        [Whether or not to build shared libraries])
 ])# _LT_ENABLE_SHARED
 
 LT_OPTION_DEFINE([LT_INIT], [shared], [_LT_ENABLE_SHARED([yes])])
@@ -220,7 +220,7 @@ m4_define([_LT_ENABLE_STATIC],
 [m4_define([_LT_ENABLE_STATIC_DEFAULT], [m4_if($1, no, no, yes)])dnl
 AC_ARG_ENABLE([static],
     [AS_HELP_STRING([--enable-static@<:@=PKGS@:>@],
-	[build static libraries @<:@default=]_LT_ENABLE_STATIC_DEFAULT[@:>@])],
+        [build static libraries @<:@default=]_LT_ENABLE_STATIC_DEFAULT[@:>@])],
     [p=${PACKAGE-default}
     case $enableval in
     yes) enable_static=yes ;;
@@ -230,10 +230,10 @@ AC_ARG_ENABLE([static],
       # Look at the argument we got.  We use all the common list separators.
       lt_save_ifs=$IFS; IFS=$IFS$PATH_SEPARATOR,
       for pkg in $enableval; do
-	IFS=$lt_save_ifs
-	if test "X$pkg" = "X$p"; then
-	  enable_static=yes
-	fi
+        IFS=$lt_save_ifs
+        if test "X$pkg" = "X$p"; then
+          enable_static=yes
+        fi
       done
       IFS=$lt_save_ifs
       ;;
@@ -241,7 +241,7 @@ AC_ARG_ENABLE([static],
     [enable_static=]_LT_ENABLE_STATIC_DEFAULT)
 
     _LT_DECL([build_old_libs], [enable_static], [0],
-	[Whether or not to build static libraries])
+        [Whether or not to build static libraries])
 ])# _LT_ENABLE_STATIC
 
 LT_OPTION_DEFINE([LT_INIT], [static], [_LT_ENABLE_STATIC([yes])])
@@ -284,10 +284,10 @@ AC_ARG_ENABLE([fast-install],
       # Look at the argument we got.  We use all the common list separators.
       lt_save_ifs=$IFS; IFS=$IFS$PATH_SEPARATOR,
       for pkg in $enableval; do
-	IFS=$lt_save_ifs
-	if test "X$pkg" = "X$p"; then
-	  enable_fast_install=yes
-	fi
+        IFS=$lt_save_ifs
+        if test "X$pkg" = "X$p"; then
+          enable_fast_install=yes
+        fi
       done
       IFS=$lt_save_ifs
       ;;
@@ -295,7 +295,7 @@ AC_ARG_ENABLE([fast-install],
     [enable_fast_install=]_LT_ENABLE_FAST_INSTALL_DEFAULT)
 
 _LT_DECL([fast_install], [enable_fast_install], [0],
-	 [Whether or not to optimize for fast installation])dnl
+         [Whether or not to optimize for fast installation])dnl
 ])# _LT_ENABLE_FAST_INSTALL
 
 LT_OPTION_DEFINE([LT_INIT], [fast-install], [_LT_ENABLE_FAST_INSTALL([yes])])
@@ -382,7 +382,7 @@ LT_OPTION_DEFINE([LT_INIT], [aix-soname=svr4], [_LT_WITH_AIX_SONAME([svr4])])
 m4_define([_LT_WITH_PIC],
 [AC_ARG_WITH([pic],
     [AS_HELP_STRING([--with-pic@<:@=PKGS@:>@],
-	[try to use only PIC/non-PIC objects @<:@default=use both@:>@])],
+        [try to use only PIC/non-PIC objects @<:@default=use both@:>@])],
     [lt_p=${PACKAGE-default}
     case $withval in
     yes|no) pic_mode=$withval ;;
@@ -391,10 +391,10 @@ m4_define([_LT_WITH_PIC],
       # Look at the argument we got.  We use all the common list separators.
       lt_save_ifs=$IFS; IFS=$IFS$PATH_SEPARATOR,
       for lt_pkg in $withval; do
-	IFS=$lt_save_ifs
-	if test "X$lt_pkg" = "X$lt_p"; then
-	  pic_mode=yes
-	fi
+        IFS=$lt_save_ifs
+        if test "X$lt_pkg" = "X$lt_p"; then
+          pic_mode=yes
+        fi
       done
       IFS=$lt_save_ifs
       ;;
@@ -424,14 +424,14 @@ dnl AC_DEFUN([AC_LIBTOOL_PICMODE], [])
 
 m4_define([_LTDL_MODE], [])
 LT_OPTION_DEFINE([LTDL_INIT], [nonrecursive],
-		 [m4_define([_LTDL_MODE], [nonrecursive])])
+                 [m4_define([_LTDL_MODE], [nonrecursive])])
 LT_OPTION_DEFINE([LTDL_INIT], [recursive],
-		 [m4_define([_LTDL_MODE], [recursive])])
+                 [m4_define([_LTDL_MODE], [recursive])])
 LT_OPTION_DEFINE([LTDL_INIT], [subproject],
-		 [m4_define([_LTDL_MODE], [subproject])])
+                 [m4_define([_LTDL_MODE], [subproject])])
 
 m4_define([_LTDL_TYPE], [])
 LT_OPTION_DEFINE([LTDL_INIT], [installable],
-		 [m4_define([_LTDL_TYPE], [installable])])
+                 [m4_define([_LTDL_TYPE], [installable])])
 LT_OPTION_DEFINE([LTDL_INIT], [convenience],
-		 [m4_define([_LTDL_TYPE], [convenience])])
+                 [m4_define([_LTDL_TYPE], [convenience])])

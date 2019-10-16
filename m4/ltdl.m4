@@ -24,14 +24,14 @@ m4_defun([_LT_CONFIG_LTDL_DIR],
 [dnl remove trailing slashes
 m4_pushdef([_ARG_DIR], m4_bpatsubst([$1], [/*$]))
 m4_case(_LTDL_DIR,
-	[], [dnl only set lt_ltdl_dir if _ARG_DIR is not simply '.'
-	     m4_if(_ARG_DIR, [.],
-	             [],
-		 [m4_define([_LTDL_DIR], _ARG_DIR)
-	          _LT_SHELL_INIT([lt_ltdl_dir=']_ARG_DIR['])])],
+        [], [dnl only set lt_ltdl_dir if _ARG_DIR is not simply '.'
+             m4_if(_ARG_DIR, [.],
+                     [],
+                 [m4_define([_LTDL_DIR], _ARG_DIR)
+                  _LT_SHELL_INIT([lt_ltdl_dir=']_ARG_DIR['])])],
     [m4_if(_ARG_DIR, _LTDL_DIR,
-	    [],
-	[m4_fatal([multiple libltdl directories: ']_LTDL_DIR[', ']_ARG_DIR['])])])
+            [],
+        [m4_fatal([multiple libltdl directories: ']_LTDL_DIR[', ']_ARG_DIR['])])])
 m4_popdef([_ARG_DIR])
 ])# _LT_CONFIG_LTDL_DIR
 
@@ -46,10 +46,10 @@ m4_define([_LTDL_DIR], [])
 m4_define([_LT_BUILD_PREFIX],
 [m4_ifdef([AC_AUTOCONF_VERSION],
    [m4_if(m4_version_compare(m4_defn([AC_AUTOCONF_VERSION]), [2.62]),
-	  [-1], [m4_ifdef([_AC_HAVE_TOP_BUILD_PREFIX],
-			  [$(top_build_prefix)],
-			  [$(top_builddir)/])],
-	  [$(top_build_prefix)])],
+          [-1], [m4_ifdef([_AC_HAVE_TOP_BUILD_PREFIX],
+                          [$(top_build_prefix)],
+                          [$(top_builddir)/])],
+          [$(top_build_prefix)])],
    [$(top_builddir)/])[]dnl
 ])
 
@@ -193,14 +193,14 @@ AC_SUBST([INCLTDL])
 m4_define([_LTDL_MODE_DISPATCH],
 [dnl If _LTDL_DIR is '.', then we are configuring libltdl itself:
 m4_if(_LTDL_DIR, [],
-	[],
+        [],
     dnl if _LTDL_MODE was not set already, the default value is 'subproject':
     [m4_case(m4_default(_LTDL_MODE, [subproject]),
-	  [subproject], [AC_CONFIG_SUBDIRS(_LTDL_DIR)
-			  _LT_SHELL_INIT([lt_dlopen_dir=$lt_ltdl_dir])],
-	  [nonrecursive], [_LT_SHELL_INIT([lt_dlopen_dir=$lt_ltdl_dir; lt_libobj_prefix=$lt_ltdl_dir/])],
-	  [recursive], [],
-	[m4_fatal([unknown libltdl mode: ]_LTDL_MODE)])])dnl
+          [subproject], [AC_CONFIG_SUBDIRS(_LTDL_DIR)
+                          _LT_SHELL_INIT([lt_dlopen_dir=$lt_ltdl_dir])],
+          [nonrecursive], [_LT_SHELL_INIT([lt_dlopen_dir=$lt_ltdl_dir; lt_libobj_prefix=$lt_ltdl_dir/])],
+          [recursive], [],
+        [m4_fatal([unknown libltdl mode: ]_LTDL_MODE)])])dnl
 dnl Be careful not to expand twice:
 m4_define([$0], [])
 ])# _LTDL_MODE_DISPATCH
@@ -248,12 +248,12 @@ if test yes != "$with_included_ltdl"; then
   # decide whether there is a useful installed version we can use.
   AC_CHECK_HEADER([ltdl.h],
       [AC_CHECK_DECL([lt_dlinterface_register],
-	   [AC_CHECK_LIB([ltdl], [lt_dladvise_preload],
-	       [with_included_ltdl=no],
-	       [with_included_ltdl=yes])],
-	   [with_included_ltdl=yes],
-	   [AC_INCLUDES_DEFAULT
-	    #include <ltdl.h>])],
+           [AC_CHECK_LIB([ltdl], [lt_dladvise_preload],
+               [with_included_ltdl=no],
+               [with_included_ltdl=yes])],
+           [with_included_ltdl=yes],
+           [AC_INCLUDES_DEFAULT
+            #include <ltdl.h>])],
       [with_included_ltdl=yes],
       [AC_INCLUDES_DEFAULT]
   )
@@ -292,28 +292,28 @@ fi
 
 case ,$with_included_ltdl,$with_ltdl_include,$with_ltdl_lib, in
   ,yes,no,no,)
-	m4_case(m4_default(_LTDL_TYPE, [convenience]),
-	    [convenience], [_LTDL_CONVENIENCE],
-	    [installable], [_LTDL_INSTALLABLE],
-	  [m4_fatal([unknown libltdl build type: ]_LTDL_TYPE)])
-	;;
+        m4_case(m4_default(_LTDL_TYPE, [convenience]),
+            [convenience], [_LTDL_CONVENIENCE],
+            [installable], [_LTDL_INSTALLABLE],
+          [m4_fatal([unknown libltdl build type: ]_LTDL_TYPE)])
+        ;;
   ,no,no,no,)
-	# If the included ltdl is not to be used, then use the
-	# preinstalled libltdl we found.
-	AC_DEFINE([HAVE_LTDL], [1],
-	  [Define this if a modern libltdl is already installed])
-	LIBLTDL=-lltdl
-	LTDLDEPS=
-	LTDLINCL=
-	;;
+        # If the included ltdl is not to be used, then use the
+        # preinstalled libltdl we found.
+        AC_DEFINE([HAVE_LTDL], [1],
+          [Define this if a modern libltdl is already installed])
+        LIBLTDL=-lltdl
+        LTDLDEPS=
+        LTDLINCL=
+        ;;
   ,no*,no,*)
-	AC_MSG_ERROR(['--with-ltdl-include' and '--with-ltdl-lib' options must be used together])
-	;;
-  *)	with_included_ltdl=no
-	LIBLTDL="-L$with_ltdl_lib -lltdl"
-	LTDLDEPS=
-	LTDLINCL=-I$with_ltdl_include
-	;;
+        AC_MSG_ERROR(['--with-ltdl-include' and '--with-ltdl-lib' options must be used together])
+        ;;
+  *)    with_included_ltdl=no
+        LIBLTDL="-L$with_ltdl_lib -lltdl"
+        LTDLDEPS=
+        LTDLINCL=-I$with_ltdl_include
+        ;;
 esac
 INCLTDL=$LTDLINCL
 
@@ -397,12 +397,12 @@ m4_pattern_allow([^LT_CONFIG_H$])dnl
 m4_ifset([AH_HEADER],
     [LT_CONFIG_H=AH_HEADER],
     [m4_ifset([AC_LIST_HEADERS],
-	    [LT_CONFIG_H=`echo "AC_LIST_HEADERS" | $SED 's|^[[      ]]*||;s|[[ :]].*$||'`],
-	[])])])
+            [LT_CONFIG_H=`echo "AC_LIST_HEADERS" | $SED 's|^[[      ]]*||;s|[[ :]].*$||'`],
+        [])])])
 AC_SUBST([LT_CONFIG_H])
 
 AC_CHECK_HEADERS([unistd.h dl.h sys/dl.h dld.h mach-o/dyld.h dirent.h],
-	[], [], [AC_INCLUDES_DEFAULT])
+        [], [], [AC_INCLUDES_DEFAULT])
 
 AC_CHECK_FUNCS([closedir opendir readdir], [], [AC_LIBOBJ([lt__dirent])])
 AC_CHECK_FUNCS([strlcat strlcpy], [], [AC_LIBOBJ([lt__strl])])
@@ -660,26 +660,26 @@ lt_dlload_save_LIBS=$LIBS
 
 LIBADD_DLOPEN=
 AC_SEARCH_LIBS([dlopen], [dl],
-	[AC_DEFINE([HAVE_LIBDL], [1],
-		   [Define if you have the libdl library or equivalent.])
-	if test "$ac_cv_search_dlopen" != "none required"; then
-	  LIBADD_DLOPEN=-ldl
-	fi
-	libltdl_cv_lib_dl_dlopen=yes
-	LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dlopen.la"],
+        [AC_DEFINE([HAVE_LIBDL], [1],
+                   [Define if you have the libdl library or equivalent.])
+        if test "$ac_cv_search_dlopen" != "none required"; then
+          LIBADD_DLOPEN=-ldl
+        fi
+        libltdl_cv_lib_dl_dlopen=yes
+        LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dlopen.la"],
     [AC_LINK_IFELSE([AC_LANG_PROGRAM([[#if HAVE_DLFCN_H
 #  include <dlfcn.h>
 #endif
     ]], [[dlopen(0, 0);]])],
-	    [AC_DEFINE([HAVE_LIBDL], [1],
-		       [Define if you have the libdl library or equivalent.])
-	    libltdl_cv_func_dlopen=yes
-	    LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dlopen.la"],
-	[AC_CHECK_LIB([svld], [dlopen],
-		[AC_DEFINE([HAVE_LIBDL], [1],
-			 [Define if you have the libdl library or equivalent.])
-	        LIBADD_DLOPEN=-lsvld libltdl_cv_func_dlopen=yes
-		LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dlopen.la"])])])
+            [AC_DEFINE([HAVE_LIBDL], [1],
+                       [Define if you have the libdl library or equivalent.])
+            libltdl_cv_func_dlopen=yes
+            LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dlopen.la"],
+        [AC_CHECK_LIB([svld], [dlopen],
+                [AC_DEFINE([HAVE_LIBDL], [1],
+                         [Define if you have the libdl library or equivalent.])
+                LIBADD_DLOPEN=-lsvld libltdl_cv_func_dlopen=yes
+                LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dlopen.la"])])])
 if test yes = "$libltdl_cv_func_dlopen" || test yes = "$libltdl_cv_lib_dl_dlopen"
 then
   lt_save_LIBS=$LIBS
@@ -691,23 +691,23 @@ AC_SUBST([LIBADD_DLOPEN])
 
 LIBADD_SHL_LOAD=
 AC_CHECK_FUNC([shl_load],
-	[AC_DEFINE([HAVE_SHL_LOAD], [1],
-		   [Define if you have the shl_load function.])
-	LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}shl_load.la"],
+        [AC_DEFINE([HAVE_SHL_LOAD], [1],
+                   [Define if you have the shl_load function.])
+        LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}shl_load.la"],
     [AC_CHECK_LIB([dld], [shl_load],
-	    [AC_DEFINE([HAVE_SHL_LOAD], [1],
-		       [Define if you have the shl_load function.])
-	    LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}shl_load.la"
-	    LIBADD_SHL_LOAD=-ldld])])
+            [AC_DEFINE([HAVE_SHL_LOAD], [1],
+                       [Define if you have the shl_load function.])
+            LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}shl_load.la"
+            LIBADD_SHL_LOAD=-ldld])])
 AC_SUBST([LIBADD_SHL_LOAD])
 
 case $host_os in
 darwin[[1567]].*)
 # We only want this for pre-Mac OS X 10.4.
   AC_CHECK_FUNC([_dyld_func_lookup],
-	[AC_DEFINE([HAVE_DYLD], [1],
-		   [Define if you have the _dyld_func_lookup function.])
-	LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dyld.la"])
+        [AC_DEFINE([HAVE_DYLD], [1],
+                   [Define if you have the _dyld_func_lookup function.])
+        LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dyld.la"])
   ;;
 beos*)
   LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}load_add_on.la"
@@ -719,9 +719,9 @@ cygwin* | mingw* | pw32*)
 esac
 
 AC_CHECK_LIB([dld], [dld_link],
-	[AC_DEFINE([HAVE_DLD], [1],
-		   [Define if you have the GNU dld library.])
-		LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dld_link.la"])
+        [AC_DEFINE([HAVE_DLD], [1],
+                   [Define if you have the GNU dld library.])
+                LT_DLLOADERS="$LT_DLLOADERS ${lt_dlopen_dir+$lt_dlopen_dir/}dld_link.la"])
 AC_SUBST([LIBADD_DLD_LINK])
 
 m4_pattern_allow([^LT_DLPREOPEN$])
@@ -771,9 +771,9 @@ _LT_EOF
         lt_cv_sys_symbol_underscore=yes
       else
         if grep '^. nm_test_func ' "$ac_nlist" >/dev/null; then
-	  :
+          :
         else
-	  echo "configure: cannot find nm_test_func in $ac_nlist" >&AS_MESSAGE_LOG_FD
+          echo "configure: cannot find nm_test_func in $ac_nlist" >&AS_MESSAGE_LOG_FD
         fi
       fi
     else
@@ -798,9 +798,9 @@ dnl AC_DEFUN([AC_LTDL_SYMBOL_USCORE], [])
 # LT_FUNC_DLSYM_USCORE
 # --------------------
 AC_DEFUN([LT_FUNC_DLSYM_USCORE],
-[AC_REQUIRE([_LT_COMPILER_PIC])dnl	for lt_prog_compiler_wl
-AC_REQUIRE([LT_SYS_SYMBOL_USCORE])dnl	for lt_cv_sys_symbol_underscore
-AC_REQUIRE([LT_SYS_MODULE_EXT])dnl	for libltdl_cv_shlibext
+[AC_REQUIRE([_LT_COMPILER_PIC])dnl      for lt_prog_compiler_wl
+AC_REQUIRE([LT_SYS_SYMBOL_USCORE])dnl   for lt_cv_sys_symbol_underscore
+AC_REQUIRE([LT_SYS_MODULE_EXT])dnl      for libltdl_cv_shlibext
 if test yes = "$lt_cv_sys_symbol_underscore"; then
   if test yes = "$libltdl_cv_func_dlopen" || test yes = "$libltdl_cv_lib_dl_dlopen"; then
     AC_CACHE_CHECK([whether we have to add an underscore for dlsym],
@@ -874,7 +874,7 @@ int main () {
       if (dlsym (handle, "_fnord"))
         status = $libltdl_dluscore;
       else
-	puts (dlerror ());
+        puts (dlerror ());
     }
     dlclose (handle);
   } else
@@ -887,8 +887,8 @@ _LT_EOF
         libltdl_status=$?
         case x$libltdl_status in
           x$libltdl_dlnouscore) libltdl_cv_need_uscore=no ;;
-	  x$libltdl_dluscore) libltdl_cv_need_uscore=yes ;;
-	  x*) libltdl_cv_need_uscore=unknown ;;
+          x$libltdl_dluscore) libltdl_cv_need_uscore=yes ;;
+          x*) libltdl_cv_need_uscore=unknown ;;
         esac
       fi
       rm -rf conftest* $libname*
